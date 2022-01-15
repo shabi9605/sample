@@ -1,0 +1,36 @@
+{% extends 'index.html' %}{% block title %}Register{% endblock %} 
+
+{% block content %}
+{% load crispy_forms_tags %}
+{% if register %}
+<h1>ThankYou for Registering</h1>
+{% else %}
+<h1 style="text-align: center;">Register Form</h1>
+
+<div style="align-items: center; text-align: center; background-color: bisque;color: rgb(18, 58, 3);">
+
+<form action="" method="POST" style="color: brown; ">
+    {% csrf_token %}
+
+    {{user_form|crispy}}{{profile_form|crispy}}
+
+    <input type="submit" value="REGISTER" style="background-color: cyan; margin-top: 1em;">
+
+</form>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!--{{user_form|crispy}}{{profile_form|crispy}}

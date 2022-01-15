@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block title %}todolist{% endblock %}
+
+{% block content %}
+<h1>{{user.username}} TODO LIST</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    Title:<input type="text" name="title" required>
+    Content:<textarea name="content"></textarea>
+    Date:<input type="date" name="date">
+    <input type="submit" value="ADD TO LIST">
+
+</form>
+
+<h1>My List</h1>
+<table border=""2>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for list in todolist %}
+    <tr>
+        <td>{{list.id}}</td>
+        <td>{{list.title}}</td>
+        <td>{{list.content}}</td>
+        <td>{{list.date}}</td>
+        <td><a href="{% url 'myblogupdate' list.id %}">Update</a></td>
+        <td><a href="{% url 'myblogdelete' list.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

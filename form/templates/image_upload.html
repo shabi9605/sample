@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+<div style="background-color: bisque;">
+<h1>Image Upload Form</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Upload Image">
+    <a href="{% url 'image_download' %}">Download Image</a>
+
+</form>
+{% if image_obj %}
+<div class="card" style="width: 18rem; background-color: aqua; margin-top: 2rem;margin-left: 3rem">
+    <img class="card-img-top" src="{{image_obj.image.url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{image_obj.name}}</h5>
+      
+      
+    </div>
+  </div>
+  
+{% endif %}
+</div>
+
+{% endblock %}
+
+
+<!--
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<h1>succesfully added {{image_obj.name}}</h1>
+<img src="{{image_obj.image.url}}">
+-->
